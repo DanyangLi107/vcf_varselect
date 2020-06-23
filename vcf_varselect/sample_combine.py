@@ -31,7 +31,7 @@ def sample_combine(dir=None, innerfreqfile=None, genefile=None, genderfile=None,
     os.chdir(dir)
     for filename in os.listdir(dir):
         file_name, file_extension = os.path.splitext(filename)
-        if file_extension == 'vcf.gz' or file_extension == '.vcf':
+        if file_extension == '.vcf.gz' or file_extension == '.vcf':
             vcf = VariantSelection(infile=filename)
             damage, lof, mis = vcf.comb_selection(FILTER=FILTER, DP=DP, QD=QD, MQ=MQ,
                                         innerfreqfile=innerfreqfile, KG=KG, EXAC=EXAC, GNOMAD=GNOMAD, SWEGEN=SWEGEN,
