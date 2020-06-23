@@ -23,8 +23,8 @@ Total variants in VCF:
 ```python
 from vcf_varselect import VariantSelection
 vcf = VariantSelection(infile='file.vcf')
-for var in vcf:
-    print (vcf.variant)
+for sample in vcf:
+    print (vcf.variant[sample])
 ```
 VCF file information:
 ```python
@@ -36,32 +36,20 @@ vcf.sample         # sample ID in vcf
 Select variants with good quality:
 ```python
 quality = vcf.quality_selection(FILTER='PASS', DP=10.0, QD=2.0, MQ=40.0)
-for var in vcf:
-    print(quality)
 ``` 
 Select rare variants:
 ```python
 freq = vcf.freq_selection(KG=0.001, EXAC=0.001, GNOMAD=0.001, SWEGEN=0.001, innerfreqfile=innerfreq_file)
-for var in vcf:
-    print(freq)
 ```
 Select damaging variants:
 ```python
 damaging, lof, mis_damage = vcf.damaging_selection(criteria=['SIFT', 'POLYPHEN', 'MPC', 'CADD', 'SPIDEX', 'PHYLOP'])
-for var in vcf:
-    print(damaging)
-    print(lof)
-    print(mis_damage)
 ```
 Select rare damaging, rare loss-of-function and rare missense variants:
 ```python
 damaging_var, lof_var, mis_var = vcf.comb_selection(FILTER='PASS', DP=10.0, QD=2.0, MQ=40.0,
-                                          KG=0.001, EXAC=0.001, GNOMAD=0.001, SWEGEN=0.001, innerfreqfile=innerfreq_file,
-                                          criteria=['SIFT', 'POLYPHEN', 'MPC', 'CADD', 'SPIDEX', 'PHYLOP'])
-for var in vcf:
-    print(damaging_var)
-    print(lof_var)
-    print(mis_var)
+                                                    KG=0.001, EXAC=0.001, GNOMAD=0.001, SWEGEN=0.001, innerfreqfile=innerfreq_file,
+                                                    criteria=['SIFT', 'POLYPHEN', 'MPC', 'CADD', 'SPIDEX', 'PHYLOP'])
 ```
 Select variants of disorder related genes:
 ```python
