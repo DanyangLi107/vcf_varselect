@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head> 
-    <meta charset="UTF-8"> 
-    <title>Title</title> 
-</head> 
-<body>
-
-</body>
-</html>
-
 # VCF VarSelect
 This is a python package to select whole-exome sequencing variants from VCF files. The parse of VCF file is based on [VCF Parser](https://github.com/moonso/vcf_parser). Paper is coming soon. 
 
