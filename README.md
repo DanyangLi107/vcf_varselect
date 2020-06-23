@@ -41,11 +41,11 @@ Select rare variants:
 ```python
 freq = vcf.freq_selection(KG=0.001, EXAC=0.001, GNOMAD=0.001, SWEGEN=0.001, innerfreqfile=innerfreq_file)
 ```
-Select damaging variants:
+Select damaging, loss-of-function and missense variants:
 ```python
 damaging, lof, mis_damage = vcf.damaging_selection(criteria=['SIFT', 'POLYPHEN', 'MPC', 'CADD', 'SPIDEX', 'PHYLOP'])
 ```
-Select rare damaging, rare loss-of-function and rare missense variants:
+Select good-quality rare damaging, rare loss-of-function and rare missense variants:
 ```python
 damaging_var, lof_var, mis_var = vcf.comb_selection(FILTER='PASS', DP=10.0, QD=2.0, MQ=40.0,
                                                     KG=0.001, EXAC=0.001, GNOMAD=0.001, SWEGEN=0.001, innerfreqfile=innerfreq_file,
